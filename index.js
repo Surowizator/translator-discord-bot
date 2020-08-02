@@ -1,7 +1,9 @@
-const fs = require('fs');
 const Discord = require('discord.js')
 const trig = require('trigedasleng-api');
+const token = require('./token.js');
+
 const client = new Discord.Client()
+client.login(token)
 
 client.once('ready', () => console.log(`logged in as ${client.user.tag}!`));
 
@@ -50,12 +52,5 @@ client.on('message', msg => {
         })
         .catch(() => msg.channel.send(`\`\`\`Server error\`\`\``));
     }
-});
-
-fs.readFile('token.txt', 'utf-8', (err, data) => {
-    if (err) {
-        console.log(err);
-    } else {
-        client.login(data)
-    }
+    
 });
